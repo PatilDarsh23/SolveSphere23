@@ -1,0 +1,287 @@
+/* ===============================
+   GLOBAL RESET
+================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", sans-serif;
+}
+
+body {
+    background: linear-gradient(120deg, #1d2671, #c33764);
+    min-height: 100vh;
+    color: #fff;
+    transition: background 0.3s, color 0.3s;
+}
+
+/* ===============================
+   HEADER
+================================ */
+header {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+header h1 {
+    font-size: 3rem;
+    letter-spacing: 2px;
+}
+
+header p {
+    margin-top: 10px;
+    opacity: 0.9;
+}
+
+.theme-btn {
+    padding: 8px 18px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 15px;
+    background: rgba(255,255,255,0.3);
+    color: #fff;
+}
+
+/* ===============================
+   DASHBOARD
+================================ */
+.dashboard {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    padding: 40px;
+}
+
+.card {
+    background: rgba(255,255,255,0.15);
+    padding: 30px;
+    border-radius: 20px;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease-in-out;
+}
+
+.card h2 {
+    margin-bottom: 10px;
+}
+
+.card:hover {
+    transform: translateY(-10px) scale(1.05);
+    background: rgba(255,255,255,0.25);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+.coming {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* ===============================
+   TOOLS SETTINGS (HIDDEN)
+================================ */
+.more-tools {
+    display: none;
+    padding: 40px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+.more-tools.show {
+    display: grid;
+}
+
+/* ===============================
+   TOOL PAGES COMMON
+================================ */
+.tool-container {
+    max-width: 450px;
+    margin: 40px auto;
+    padding: 25px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 20px;
+    backdrop-filter: blur(12px);
+    text-align: center;
+}
+
+.tool-container h2 {
+    margin-bottom: 15px;
+}
+
+/* ===============================
+   CALCULATOR
+================================ */
+#display {
+    width: 100%;
+    height: 60px;
+    font-size: 1.6rem;
+    text-align: right;
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.buttons button {
+    padding: 18px;
+    font-size: 1.1rem;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    background: rgba(255,255,255,0.3);
+}
+
+.buttons button:hover {
+    background: rgba(255,255,255,0.5);
+}
+
+/* ===============================
+   TODO
+================================ */
+.todo input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    border: none;
+}
+
+.todo button {
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+}
+
+#taskList {
+    list-style: none;
+    margin-top: 20px;
+}
+
+#taskList li {
+    background: rgba(255,255,255,0.3);
+    padding: 10px;
+    margin-bottom: 8px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* ===============================
+   NOTES
+================================ */
+.notes input,
+.notes textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    border: none;
+}
+
+.notes textarea {
+    min-height: 100px;
+    resize: none;
+}
+
+#notesList {
+    list-style: none;
+    margin-top: 20px;
+}
+
+#notesList li {
+    background: rgba(255,255,255,0.3);
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+}
+
+/* ===============================
+   CONVERTER / TIMER
+================================ */
+select, input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    border: none;
+}
+
+/* ===============================
+   BUTTON EFFECTS
+================================ */
+button {
+    transition: all 0.2s ease;
+}
+
+button:hover {
+    transform: scale(1.05);
+    background: rgba(255,255,255,0.4);
+}
+
+/* ===============================
+   LIGHT MODE
+================================ */
+.light {
+    background: #f4f6f8;
+    color: #222;
+}
+
+.light .card,
+.light .tool-container {
+    background: rgba(0,0,0,0.1);
+}
+
+.light button {
+    background: rgba(0,0,0,0.15);
+    color: #222;
+}
+
+/* ===============================
+   FOOTER
+================================ */
+footer {
+    text-align: center;
+    padding: 20px;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+/* ===============================
+   MOBILE
+================================ */
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 2rem;
+    }
+
+    .dashboard,
+    .more-tools {
+        grid-template-columns: 1fr;
+        padding: 20px;
+    }
+
+    .tool-container {
+        width: 90%;
+    }
+}
+
+.social-links a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 8px;
+    transition: 0.3s;
+}
+
+.social-links a:hover {
+    color: #ffdd59; /* highlight on hover */
+    transform: scale(1.1);
+}
+
+

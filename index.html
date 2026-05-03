@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SolveSphere | Smart Problem Solver</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header>
+    <button onclick="toggleTheme()" class="theme-btn">🌙 Toggle Mode</button>
+    <h1>SolveSphere</h1>
+    <p>One platform. Many solutions.</p>
+</header>
+
+<!-- ================= MAIN DASHBOARD ================= -->
+<section class="dashboard">
+
+    <div class="card" onclick="openTool('calculator')">
+        <h2>🧮 Calculator</h2>
+        <p>Fast & accurate calculations</p>
+    </div>
+
+    <div class="card" onclick="openTool('todo')">
+        <h2>📋 To-Do Manager</h2>
+        <p>Manage daily tasks</p>
+    </div>
+
+    <div class="card" onclick="openTool('notes')">
+        <h2>📝 Smart Notes</h2>
+        <p>Save ideas & thoughts</p>
+    </div>
+
+</section>
+
+<!-- ================= TOOLS SETTINGS BUTTON ================= -->
+<div style="text-align:center; margin-bottom:20px;">
+    <button onclick="toggleExtraTools()" class="theme-btn">
+        ⚙️ Tools Settings
+    </button>
+</div>
+
+<!-- ================= EXTRA TOOLS (HIDDEN) ================= -->
+<section class="more-tools" id="extraTools">
+
+    <div class="card" onclick="openTool('converter')">
+        <h2>🔄 Unit Converter</h2>
+        <p>Convert units easily</p>
+    </div>
+
+    <div class="card" onclick="openTool('timer')">
+        <h2>⏱ Timer</h2>
+        <p>Simple countdown timer</p>
+    </div>
+
+</section>
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+    <p>© 2026 SolveSphere | Built by Darshan Patil</p>
+    <div class="social-links" style="margin-top:10px; font-size:1.2rem;">
+        <a href="https://www.linkedin.com/in/darshan-patil-63b217274?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">🔗 LinkedIn</a> |
+        <a href="https://www.instagram.com/_darshan.2301?igsh=MXE4azNpaTZhY2kz" target="_blank">📸 Instagram</a>
+    </div>
+</footer>
+
+<!-- ================= JAVASCRIPT ================= -->
+<script src="script.js"></script>
+
+</body>
+</html>
+

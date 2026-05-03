@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Timer | SolveSphere</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Main site CSS -->
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<header>
+    <h1>⏱ Smart Timer</h1>
+    <p>Simple & reliable countdown timer</p>
+</header>
+
+<div class="calculator">
+
+    <input type="number" id="hours" placeholder="Hours" min="0">
+    <input type="number" id="minutes" placeholder="Minutes" min="0" max="59">
+    <input type="number" id="seconds" placeholder="Seconds" min="0" max="59">
+
+    <h2 id="timeDisplay">00:00:00</h2>
+
+    <div class="buttons">
+        <button onclick="startTimer()">▶ Start</button>
+        <button onclick="pauseTimer()">⏸ Pause</button>
+        <button onclick="resetTimer()">🔄 Reset</button>
+    </div>
+
+    <br>
+    <button onclick="goHome()">⬅ Back to Home</button>
+</div>
+
+<script>
+let totalSeconds = 0;
+let timer = null;
+
+function startTimer() {
+    if (timer) return;
+
+    if (totalSeconds === 0) {
+        const h = parseInt(document.getElementById("hours").value) || 0;
+        const m = parseInt(document.getElementById("minutes").value) || 0;
+        const s = parseInt(document.getElementById("seconds").value) || 0;
+        totalSeconds = h * 3600 + m * 60 + s;
+    }
+
+    if (totalSeconds <= 0) {
+        alert("Please enter time first");
+        return;
+    }
+
+    timer = setInterval(() => {
+        totalSeconds--;
+        updateDisplay();
+
+        if (totalSeconds <= 0) {
+            clearInterval(timer);
+            timer = null;
+            alert("⏰ Time's up!");
+        }
+    }, 1000);
+}
+
+function pauseTimer() {
+    clearInterval(timer);
+    timer = null;
+}
+
+function resetTimer() {
+    pauseTimer();
+    totalSeconds = 0;
+    updateDisplay();
+    document.getElementById("hours").value = "";
+    document.getElementById("minutes").value = "";
+    document.getElementById("seconds").value = "";
+}
+
+function updateDisplay() {
+    let h = Math.floor(totalSeconds / 3600);
+    let m = Math.floor((totalSeconds % 3600) / 60);
+    let s = totalSeconds % 60;
+
+    document.getElementById("timeDisplay").innerText =
+        String(h).padStart(2, "0") + ":" +
+        String(m).padStart(2, "0") + ":" +
+        String(s).padStart(2, "0");
+}
+
+function goHome() {
+    window.location.href = "../index.html";
+}
+</script>
+
+</body>
+</html>
+
+
+

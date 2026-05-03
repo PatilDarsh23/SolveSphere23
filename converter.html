@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Unit Converter | SolveSphere</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Main site CSS -->
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<header>
+    <h1>🔄 Smart Unit Converter</h1>
+    <p>Convert Length, Weight & Temperature</p>
+</header>
+
+<div class="notes">
+
+    <select id="type" onchange="resetConverter()">
+        <option value="">Select Conversion Type</option>
+        <option value="length">Length</option>
+        <option value="weight">Weight</option>
+        <option value="temp">Temperature</option>
+    </select>
+
+    <input type="number" id="inputValue" placeholder="Enter value">
+
+    <select id="fromUnit"></select>
+    <select id="toUnit"></select>
+
+    <button onclick="convert()">Convert</button>
+
+    <h2 id="result">Result: --</h2>
+
+    <br>
+    <button onclick="goHome()">⬅ Back to Home</button>
+</div>
+
+<script>
+const units = {
+    length: {
+        meter: 1,
+        kilometer: 1000,
+        centimeter: 0.01,
+        mile: 1609.34
+    },
+    weight: {
+        gram: 1,
+        kilogram: 1000,
+        pound: 453.592
+    }
+};
+
+document.getElementById("type").addEventListener("change", loadUnits);
+
+function loadUnits() {
+    const type = document.getElementById("type").value;
+    const from = document.getElementById("fromUnit");
+    const to = document.getElementById("toUnit");
+
+    from.innerHTML = "";
+    to.innerHTML = "";
+
+    if (!type) return;
+
+    if (type === "temp") {
+        ["Celsius", "Fahrenheit", "Kelvin"].forEach(u => {
+            from.add(new Option(u, u));
+            to.add(new Option(u, u));
+        });
+        return;
+    }
+
+    for (let unit in units[type]) {
+        from.add(new Option(unit, unit));
+        to.add(new Option(unit, unit));
+    }
+}
+
+function convert() {
+    const type = document.getElementById("type").value;
+    const value = parseFloat(document.getElementById("inputValue").value);
+    const from = document.getElementById("fromUnit").value;
+    const to = document.getElementById("toUnit").value;
+
+    if (!type || isNaN(value)) {
+        alert("Please fill all fields");
+        return;
+    }
+
+    let result;
+
+    if (type === "temp") {
+        result = convertTemp(value, from, to);
+    } else {
+        result = value * units[type][from] / units[type][to];
+    }
+
+    document.getElementById("result").innerText =
+        `Result: ${result.toFixed(3)}`;
+}
+
+function convertTemp(value, from, to) {
+    if (from === to) return value;
+
+    if (from === "Celsius") {
+        if (to === "Fahrenheit") return value * 9/5 + 32;
+        if (to === "Kelvin") return value + 273.15;
+    }
+
+    if (from === "Fahrenheit") {
+        if (to === "Celsius") return (value - 32) * 5/9;
+        if (to === "Kelvin") return (value - 32) * 5/9 + 273.15;
+    }
+
+    if (from === "Kelvin") {
+        if (to === "Celsius") return value - 273.15;
+        if (to === "Fahrenheit") return (value - 273.15) * 9/5 + 32;
+    }
+}
+
+function resetConverter() {
+    document.getElementById("result").innerText = "Result: --";
+    document.getElementById("inputValue").value = "";
+}
+
+function goHome() {
+    window.location.href = "../index.html";
+}
+</script>
+
+</body>
+</html>
